@@ -1,0 +1,29 @@
+<section>
+    <form [formGroup]="loginForm">
+        <div class="login">
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput formControlName="email" placeholder="name@email.com" />
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input
+                    matInput
+                    formControlName="password"
+                    placeholder="Enter your password"
+                    [type]="hide ? 'password' : 'text'"
+                />
+                <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                >
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <button [disabled]="!loginForm.valid" mat-flat-button color="primary">Login</button>
+    </form>
+</section>
